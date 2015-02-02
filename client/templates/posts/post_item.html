@@ -1,0 +1,28 @@
+<template name="postItem">
+  <div class="post">
+    <div class="post-content" style="width:100%">
+      <div class="row">
+      	<div class="col-md-4">
+      		<!--<h3>{{titel}}</h3>-->
+      		<h3><a href="{{pathFor 'postPage'}}">{{titel}}</a></h3>
+      	</div>
+		<div class="col-md-4">
+			<center>
+        <div id="progress_{{_id}}" style="position:relative,left:50%,height:32px;width:32px;background-color:#00FF00;border-radius:16px">{{progress}}</div>
+      </center>
+    </div>
+    <div class="col-md-4">
+      		<!--<span style="float:right;align:right">-->
+            <button class="btn btn-danger btn-sm" style="float:right" id="down">
+              <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+            </button>
+            <span style="align:middle;float:right;padding:5px">{{nofComplaints}}</span>
+            <button class="btn btn-success btn-sm" style="float:right" id="up">
+              <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+            </button>
+          <!--</span>-->
+      	</div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,28 @@
+
+<template name="layout">
+    <div class="container">
+    <header class="navbar navbar-default" role="navigation"> 
+      <div class="navbar-header" style="width:100%">
+      	<div class="row" style="height:50px">
+          <div class="col-md-4">
+            <img src="/img/sp.png" style="position:relative;display:float;width:20px;height:32px;top:8px;left:8px"/>
+            <img src="/img/ict.png" style="position:relative;display:float;width:110px;height:32px;top:8px;left:8px"/>
+            <img src="/img/fk.gif" style="position:relative;display:float;width:110px;height:32px;top:8px;left:8px"/>
+          </div>
+          <div class="col-md-4">
+            <a class="navbar-brand" style="position:relative;left:26%;font-size:28px" href="/">Koll på stan!</a>
+          </div>
+	        <div class="col-md-4">
+	        	<div style="font-style: italic;line-height: 50px;horizontal-align:middle;">
+	        		<span style="float:right;padding-right:10px">Påverka samhällsåtgärder!</span>
+	        	</div>
+	        </div>
+        </div>
+      </div>
+    </header>
+	<h3><a href="{{pathFor 'postSubmit'}}" class="btn btn-info" style="width:100%" id="addcomplaint">+ Lägg till nytt förslag</a></h3>	    
+    <div id="main" class="row-fluid">
+      {{> yield}}
+    </div>
+  </div>
+</template>

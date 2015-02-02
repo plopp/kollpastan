@@ -1,0 +1,161 @@
+<template name="postPage">
+  {{> postItem}}
+  <div class="row">
+    {{#with getImage}}
+	  <div class="col-md-6"><img src="{{this.url}}" style="width:100%;height:400px"/></div>
+    {{/with}}
+	  <div class="col-md-6" style="height:400px;width:50%"><div id="map"></div></div>
+  </div> 
+  <hr>
+  <div class="panel panel-danger">
+  	<div class="panel-heading">
+      1. Rapport
+    </div>
+  	<div class="panel-body">
+	  {{rapport}}
+	  </div>	
+  </div>
+  {{#if hasMottagen}}
+      <div class="panel panel-warning">
+      	<div class="panel-heading">
+          2. Mottagen
+        </div>
+      	<div class="panel-body">
+    	    {{mottagen}}
+    	  </div>
+      </div>
+      {{#if hasForeslagenAtgard}}
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              3. Föreslagen åtgärd
+            </div>
+            <div class="panel-body">
+              {{atgardforslag}}
+            </div>
+          </div>
+          {{#if hasAtgardPoborjad}}
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  4. Åtgärd påbörjat
+                </div>
+                <div class="panel-body">
+                  {{atgardpoborjad}}
+                </div>
+              </div>
+              {{#if hasAtgardGenomford}}
+                  <div class="panel panel-success">
+                    <div class="panel-heading">
+                      5. Genomförd åtgärd
+                    </div>
+                    <div class="panel-body">
+                      {{atgardgenomford}}
+                    </div>
+                  </div>
+              {{else}}
+                  <div class="well well-sm">
+                    <div class="row">
+                      <div class="col-md-6">
+                        Har du genomfört en åtgärd? Lägg till det här.
+                      </div>
+                      <div class="col-md-6">
+                        <button class="btn btn-primary btn-lg" id="butAtgardGenomford">Lägg till åtgärd</button>
+                      </div>
+                    </div>
+                    <div class="row" hidden=true id="addAtgardGenomfordRow">
+                        <div class="col-md-12">
+                          <form id="addAtgardGenomford" style="width:100%;padding:5px">
+                            <textarea style="width:100%"></textarea>
+                            <button class="btn btn-primary btn-lg" id="butAddAtgardGenomford">Lägg till åtgärd</button>
+                          </form>
+                        </div>
+                    </div>
+                  </div>
+              {{/if}}
+          {{else}}
+              <div class="well well-sm">
+                <div class="row">
+                  <div class="col-md-6">
+                    Har du påbörjat en åtgärd? Lägg till det här.
+                  </div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary btn-lg" id="butAtgardPoborjad">Lägg till åtgärdsplan</button>
+                  </div>
+                </div>
+                <div class="row" hidden=true id="addAtgardPoborjadRow">
+                    <div class="col-md-12">
+                      <form id="addAtgardPoborjad" style="width:100%;padding:5px">
+                        <textarea style="width:100%"></textarea>
+                        <button class="btn btn-primary btn-lg" id="butAddAtgardPoborjad">Lägg till åtgärdsförslag</button>
+                      </form>
+                    </div>
+                </div>
+              </div>
+          {{/if}}
+      {{else}}
+          <div class="well well-sm">
+            <div class="row">
+              <div class="col-md-6">
+                Har du ett åtgärdsförslag? Lägg till det här.
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-primary btn-lg" id="butAtgardForslag">Lägg till åtgärdsförslag</button>
+              </div>
+            </div>
+            <div class="row" hidden=true id="addAtgardForslagRow">
+                <div class="col-md-12">
+                  <form id="addAtgardForslag" style="width:100%;padding:5px">
+                    <textarea style="width:100%"></textarea>
+                    <button class="btn btn-primary btn-lg" id="butAddAtgardForslag">Lägg till åtgärdsförslag</button>
+                  </form>
+                </div>
+            </div>
+          </div>
+      {{/if}}
+  {{else}}
+      <div class="well well-sm">
+        <div class="row">
+          <div class="col-md-6">
+            Vill du göra något åt detta? Lägg till att du tagit mot denna åtgärd och ämnar åtgärda det.
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-primary btn-lg" id="butMottagen">Lägg till mottagen</button>
+          </div>
+        </div>
+        <div class="row" hidden=true id="addMottagenRow">
+            <div class="col-md-12">
+              <form id="addMottagen" style="width:100%;padding:5px">
+                <textarea style="width:100%"></textarea>
+                <button class="btn btn-primary btn-lg" id="butAddMottagen">Lägg till mottagen</button>
+              </form>
+            </div>
+        </div>
+      </div>
+  {{/if}}
+  <!-- <div class="panel panel-info">
+  	<div class="panel-heading">
+      3. Föreslagen åtgärd
+    </div>
+  	<div class="panel-body">
+	  {{atgardforslag}}
+	</div>
+  </div> -->
+
+  <!-- <div class="panel panel-primary">
+  	<div class="panel-heading">
+      4. Åtgärd påbörjad
+    </div>
+  	<div class="panel-body">
+	  {{atgardpoborjad}}
+	</div>
+  </div> -->
+  
+  <!-- <div class="panel panel-success">
+  	<div class="panel-heading">
+      5. Genomförd åtgärd
+    </div>
+  	<div class="panel-body">
+	  {{atgardgenomford}}
+	</div>
+  </div> -->
+  <button class="btn btn-danger btn-lg" id="butRemove"><span class="glyphicon glyphicon-trash" style="margin-right:10px"></span>Ta bort detta klagomål</button>
+</template>

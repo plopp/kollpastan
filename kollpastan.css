@@ -1,0 +1,10 @@
+.posts {
+	transition: all 200ms 0ms ease-in; 
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px
+}
