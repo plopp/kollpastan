@@ -1,4 +1,5 @@
 .posts {
+	position: relative;
 	transition: all 200ms 0ms ease-in; 
 }
 
